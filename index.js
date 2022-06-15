@@ -5,8 +5,8 @@ connectToMongo();
 
 const app = express()
 
-// const dotenv=require("dotenv")
-// dotenv.config();
+const dotenv=require("dotenv")
+dotenv.config();
 const port = 5000
 
 app.use(cors())
@@ -20,6 +20,6 @@ app.use('/api/address', require('./routes/address'))
 app.use('/api/checkout', require('./routes/stripe'))
 app.use('/api/orders',require('./routes/orders'))
 
-app.listen(port || 5000, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log(`Sono listening at http://localhost:${port}`)
 })
