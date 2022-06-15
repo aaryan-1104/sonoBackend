@@ -1,6 +1,6 @@
 const jwt=require('jsonwebtoken')
 
-const "theuserisauthorized"="theuserisauthorized"
+const JWT_SECRET="theuserisauthorized"
 
 const fetchuser=(req,res,next)=>{
     //? fetch the token is exists from header or return error
@@ -10,7 +10,7 @@ const fetchuser=(req,res,next)=>{
     }
     //? Verify the token if that is correct  and move to next function in "router.post" or not or return error
     try{
-        const data=jwt.verify(token,"theuserisauthorized")
+        const data=jwt.verify(token,JWT_SECRET)
         req.user=data.user;
         next();
     }catch(error){

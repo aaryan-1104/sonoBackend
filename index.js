@@ -20,5 +20,5 @@ app.use('/api/checkout', require('./routes/stripe'))
 app.use('/api/orders',require('./routes/orders'))
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log(`Sono listening at http://localhost:${port}`)
+  console.log(`Sono listening at http://localhost:${process.env.PORT}`)
 })

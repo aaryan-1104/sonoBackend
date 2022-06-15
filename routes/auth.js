@@ -11,7 +11,7 @@ const bcrypt = require("bcrypt");
 
 const jwt = require("jsonwebtoken");
 
-const "theuserisauthorized"=process.env."theuserisauthorized";
+const JWT_SECRET="theuserisauthorized";
 
 const fetchuser=require('../middleware/fetchuser')
 
@@ -65,7 +65,7 @@ router.post(
           id: user.id,
         },
       };
-      const authToken = jwt.sign(data, "theuserisauthorized");
+      const authToken = jwt.sign(data, JWT_SECRET);
       success=true
       res.json({success,authToken});
 
@@ -115,7 +115,7 @@ router.post(
               id: user.id,
             },
         };
-        const authToken = jwt.sign(data, "theuserisauthorized",{expiresIn:"7d"});
+        const authToken = jwt.sign(data, JWT_SECRET,{expiresIn:"7d"});
         const username=user.name;
         success=true
         const id = user.id;
