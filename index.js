@@ -5,9 +5,9 @@ connectToMongo();
 const app = express()
 var cors=require('cors')
 
-const dotenv=require("dotenv")
-dotenv.config();
-const port = process.env.PORT
+// const dotenv=require("dotenv")
+// dotenv.config();
+const port = 5000
 
 app.use(cors())
 app.use(express.json());
@@ -19,16 +19,6 @@ app.use('/api/wishlist', require('./routes/wishlist'))
 app.use('/api/address', require('./routes/address'))
 app.use('/api/checkout', require('./routes/stripe'))
 app.use('/api/orders',require('./routes/orders'))
-
-
-app.get('/',(req,res)=>{
-    obj={
-        name:'Aryan',
-        number:49
-    }
-    res.json(obj)
-})
-
 
 app.listen(port || 5000, () => {
   console.log(`Sono listening at http://localhost:${port}`)
